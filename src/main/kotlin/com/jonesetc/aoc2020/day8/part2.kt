@@ -17,7 +17,7 @@ fun main(@Suppress("UNUSED_PARAMETER") args: Array<String>) {
     val seenInstructions = mutableSetOf<Int>()
 
     for (i in bootCode.indices) {
-        val swappedOp = when(bootCode[i].first) {
+        val swappedOp = when (bootCode[i].first) {
             "nop" -> "jmp"
             "jmp" -> "nop"
             else -> continue
@@ -27,7 +27,7 @@ fun main(@Suppress("UNUSED_PARAMETER") args: Array<String>) {
             seenInstructions.add(instructionPointer)
             val instruction = bootCode[instructionPointer]
                 .let {
-                    when(instructionPointer) {
+                    when (instructionPointer) {
                         i -> it.copy(first = swappedOp)
                         else -> it
                     }

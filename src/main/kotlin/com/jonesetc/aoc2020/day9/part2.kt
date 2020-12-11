@@ -26,9 +26,12 @@ fun main(@Suppress("UNUSED_PARAMETER") args: Array<String>) {
         .flatMap { start ->
             numbers
                 .drop(start)
-                .scan(listOf<Long>(), { acc, curr ->
-                    acc.plus(curr)
-                })
+                .scan(
+                    listOf<Long>(),
+                    { acc, curr ->
+                        acc.plus(curr)
+                    }
+                )
                 .dropWhile { subList -> subList.sum() < target }
                 .take(1)
                 .filter { subList -> subList.sum() == target }
